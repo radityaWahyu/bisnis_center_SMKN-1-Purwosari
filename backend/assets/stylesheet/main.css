@@ -1,0 +1,258 @@
+body,
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto';
+  background-color: #271232;
+}
+/* login box stylesheet */
+.login-box {
+  width: 900px;
+}
+
+.login-box .ant-card-body {
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.login-box .background {
+  background: url('~assets/image/login_back.jpg');
+  background-size: cover;
+  height: 500px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* card for table */
+#datatable {
+  margin-top: 20px
+}
+
+#datatable .ant-card-head {
+  background-color: rgba(39, 18, 50, 0.75);
+  color: #FFFFFF;
+  padding: 0px 20px;
+}
+
+#datatable .ant-card-body {
+  padding: 0px
+}
+
+#datatable .ant-pagination {
+  margin-right: 20px
+}
+
+/* activity table */
+.activityTable.ant-card {
+  margin-top: 0px
+}
+
+.activityTable.ant-card > .ant-card-head {
+  background-color: #eaeaea;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 0px 20px;
+}
+
+.activityTable.ant-card > .ant-card-body {
+  padding: 0px
+}
+
+.activityTable.ant-card > .ant-pagination {
+  margin-right: 20px
+}
+
+.activity-box {
+  padding-bottom: 10px;
+}
+
+/* berita detail */
+.berita {
+  background-color: #fff;
+  margin-top: 10px;
+}
+.berita > .jumbotron {
+  height: 400px;
+}
+.berita > .jumbotron > img{
+  object-fit: cover;
+  object-position: 0px 20%;
+  width: 100%;
+  height: 400px;
+}
+.berita > .jumbotron > .title {
+  position: relative;
+  height: 400px;
+  top: -400px;
+  background-image: linear-gradient(to bottom,transparent, rgba(0, 0, 0, 0.73));
+  padding: 300px 0px 0px 50px;
+  box-sizing: border-box;
+}
+.berita > .jumbotron > .title h2 {
+  margin-bottom: 0px;
+  text-transform: capitalize;
+  font-size: 27px;
+}
+.berita > .jumbotron > .title h2,
+.berita > .jumbotron > .title p {
+  color: #fff;
+}
+.berita > .content {
+  padding: 10px 20px 20px 20px;
+  font-size: 15px;
+}
+.skelton {
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+/* navigation sider */
+#sidebar {
+  -webkit-box-shadow: 6px 0px 10px 0px rgba(189, 189, 189, 0.9);
+  -moz-box-shadow: 6px 0px 10px 0px rgba(189, 189, 189, 0.9);
+  box-shadow: 6px 0px 10px 0px rgba(189, 189, 189, 0.9);
+}
+.avatar.ant-avatar > img, .image-profil, .produk-image {
+  background-color: #f2f2f2;
+  object-fit: cover;
+  object-position: 0px 25%;
+}
+/* content layout */
+
+/* error page class */
+.not-connect {
+  background: url('~assets/image/not_connected_api.jpg') no-repeat bottom center;
+  height: 100vh;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.not-connect .title {
+  font-size: 3.5em;
+  margin-bottom: 0px;
+}
+
+.not-connect .messages {
+  margin-top: 0px;
+  font-size: 1.5em;
+  line-height: 30px;
+}
+/* error 401 page */
+.alert-401.ant-alert > .ant-alert-icon {
+  top: 26px;
+  left: 18px;
+  font-size: 30px;
+}
+.alert-401.ant-alert > .ant-alert-message {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+.alert-401.ant-alert > .ant-alert-description {
+  font-size: 14px;
+  line-height: 22px;
+}
+.alert-401.ant-alert > .ant-alert-description button {
+  margin-top: 8px;
+}
+/* transition effect */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
+  opacity: 0;
+}
+
+/* spinner */
+#spinner {
+  background-color: #271232;
+}
+#spinner .ant-spin-blur {
+  height: 100vh;
+}
+
+#spinner>div>.ant-spin .ant-spin-dot {
+  top: 80%;
+}
+
+#spinner>div>.ant-spin .ant-spin-text {
+  top: 83%;
+  color: #ffffff;
+  text-shadow: none;
+  font-size: 18px;
+}
+
+/* ckeditor css */
+.ck-editor__editable {
+  min-height: 470px;
+ }
+
+ .image-cover img {
+  width: 80px;
+  height: 90px;
+  object-fit: cover;
+  background: #fff;
+  border: 2px #F2F4F7 solid;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+.image-detail img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  background: #fff;
+  border: 2px #F2F4F7 solid;
+  margin-right: 20px;
+}
+.label dt{
+  float: left;
+  clear: left;
+  min-width: 100px;
+  margin-bottom: 6px;
+}
+.label dd{
+  margin-left: 108px;
+  text-transform: capitalize;
+}
+.label dt:after {
+  float: right;
+  content: ":";
+}
+/* dashboard page */
+.graph.ant-card > .ant-card-body {
+  padding: 20px;
+}
+.statistic.ant-statistic > .ant-statistic-title {
+  font-size: 18px;
+}
+.statistic.ant-statistic > .ant-statistic-title {
+  font-size: 18px;
+}
+.statistic.ant-statistic > .ant-statistic-content {
+  font-size: 40px;
+}
+.statistic.ant-statistic > .ant-statistic-content > .ant-statistic-content-prefix i {
+  margin-right: 10px;
+}
+
+/* universal class */
+.capitalize{
+  text-transform: capitalize;
+}
+
+/* product detail in bottom area */
+.bottom-detail.ant-row {
+  background-color: white;
+  margin-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* review box style */
+.review-box.ant-comment > .ant-comment-inner{
+  padding-bottom: 0px;
+}
