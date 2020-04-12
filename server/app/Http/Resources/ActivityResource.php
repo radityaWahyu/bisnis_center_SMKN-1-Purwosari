@@ -39,6 +39,10 @@ class ActivityResource extends JsonResource
           case 'App\User':
             $model_name = "User";
             break;
+
+          case 'App\Gallery':
+            $model_name = "Galleri";
+            break;
           
           default:
             $model_name = "User";

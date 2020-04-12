@@ -97,7 +97,10 @@ Route::prefix('admin')->group(function () {
     // ─── GALLERY  ──────────────────────────────────────────────────────────
     //
     Route::get('gallery', 'galleryController@index');
-
+    Route::post('gallery', 'galleryController@store');
+    Route::post('gallery/delete', 'galleryController@delete');
+    Route::get('gallery/{id}', 'galleryController@show');
+    
   // end for middleware auth  
   });
 

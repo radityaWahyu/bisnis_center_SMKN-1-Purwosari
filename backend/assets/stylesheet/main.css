@@ -256,3 +256,41 @@ html {
 .review-box.ant-comment > .ant-comment-inner{
   padding-bottom: 0px;
 }
+
+/* galery in product detail */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery > .item {
+  width:30%;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 5px;
+}
+.gallery > .item img {
+  object-fit: cover;
+}
+.gallery > .item:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+}
+.gallery-pagination.ant-pagination {
+  margin-left: 25%;
+  margin-top: 20px;
+}
+.image-spin {
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-box > .caption {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  color: white;
+  padding: 10px 20px 10px 20px;
+}

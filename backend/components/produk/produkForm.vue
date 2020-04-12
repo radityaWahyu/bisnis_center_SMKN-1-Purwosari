@@ -157,7 +157,7 @@ export default {
       editor: ClassicEditor,
       editorData: "",
       image: "",
-      imageFile: [],
+      imageData: [],
       kategori: [],
       jurusan: [],
       serverError: [],

@@ -100,7 +100,6 @@ export default {
           this.id
         );
         this.row = data;
-        console.log(data);
       } catch (error) {
         console.log(error.response);
       }

@@ -8,6 +8,7 @@ interface GalleryInterface
 {
   public function getAll(array $data);
   public function paginate(array $data);
+  public function show($id);
   public function create(array $data, $image);
   public function delete($id);
 }

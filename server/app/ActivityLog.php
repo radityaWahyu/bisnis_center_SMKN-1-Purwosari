@@ -39,6 +39,11 @@ class ActivityLog extends Activity
         return $this->belongsTo('App\Review','subject_id','id');
     }
 
+    public function galleris()
+    {
+        return $this->belongsTo('App\Gallery','subject_id','id');
+    }
+
     public function userSubject()
     {
         return $this->belongsTo('App\User', 'subject_id', 'id');

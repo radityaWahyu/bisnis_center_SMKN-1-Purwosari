@@ -125,7 +125,7 @@
       :style="{ marginLeft: '0px', marginRight: '0px' }"
     >
       <a-col :span="9">
-        <produk-gallery />
+        <produk-gallery :id="id" />
       </a-col>
       <a-col :span="15">
         <a-card title="ULASAN PENGUNJUNG" class="galery" :bordered="false">

@@ -5,14 +5,14 @@ use App\Gallery;
 use App\Repositories\Interfaces\GalleryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class GalleryRepository implements ItemInterface
+class GalleryRepository implements GalleryInterface
 {
 
   private $table;
 
   public function __construct(Gallery $gallery)
   {
-    $this->table = $item;
+    $this->table = $gallery;
   }
 
   public function getAll(array $data)
@@ -60,9 +60,9 @@ class GalleryRepository implements ItemInterface
   {
     try {
       $row = new $this->table;
-      $row->title = $data['caption'];
+      $row->caption = $data['caption'];
       $row->image = $image;
-      $row->item = $data['item'];
+      $row->item = $data['item_id'];
       $row->save();
 
       $result = array('status' => true, 'message' => 'saved');
@@ -88,5 +88,19 @@ class GalleryRepository implements ItemInterface
     }
 
     return $result;
+  }
+
+  public function show($id)
+  {
+    try {
+      $row = $this->table;
+      $row = $row->where('id',$id)->first();
+      $result = array('status' => true, 'message' => 'found_row', 'data'=> $row);
+
+    } catch (Exception $e) {
+      $result = array('status' => false, 'message'=> 'not_found', 'data' => null);
+    }
+
+    return $result; 
   }
 }
