@@ -400,6 +400,13 @@ html, body, h4, p{
   width: 260px;
   height: 200px;
   margin: 5px 5px;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+.gallery-image > .image:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px #2B7A78;
 }
 .gallery-image .image img {
   object-fit: cover;

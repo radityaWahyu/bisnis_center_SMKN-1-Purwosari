@@ -52,7 +52,7 @@
           <review-product :id="row.id" />
         </b-tab-item>
         <b-tab-item label="Galeri Gambar" icon="folder-image">
-          <image-gallery />
+          <image-gallery :id="row.id" />
         </b-tab-item>
       </b-tabs>
     </div>

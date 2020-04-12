@@ -26,7 +26,8 @@ Route::get('post/{slug}', 'FrontendController@postBySlug');
 Route::get('departement/list', 'DepartementController@list');
 Route::get('departement/{departement}', 'DepartementController@show');
 
-
+Route::get('gallery', 'galleryController@index');
+Route::get('gallery/{id}', 'galleryController@show');
 
 // --------ADMIN ROUTE ------------------------------------------------------------
 Route::prefix('admin')->group(function () {
