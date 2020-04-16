@@ -143,6 +143,7 @@ export default {
                 description: "Data Berhasil dihapus dari sistem."
               });
               _this.selectedRow = [];
+              _this.$refs.dataTable.onClearSelectedRow();
               _this.$refs.dataTable.fetchData();
             })
             .catch(error => {

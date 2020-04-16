@@ -11,16 +11,17 @@ export const actions = {
         });
     });
   },
-  createDepartement({ store }, value) {
+  createDepartement({ store }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post(`departement`, value)
+        .$post(`departement`, payload)
         .then(response => {
-          if (response.status) {
-            resolve(response);
-          } else {
-            reject(response);
-          }
+          resolve(response);
+          // if (response.status) {
+          //   resolve(response);
+          // } else {
+          //   reject(response);
+          // }
         })
         .catch(error => {
           reject(error.response);

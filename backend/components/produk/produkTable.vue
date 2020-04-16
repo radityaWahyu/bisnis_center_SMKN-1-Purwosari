@@ -272,6 +272,9 @@ export default {
       this.selectedRowKeys = [];
       this.$emit("selectedRow", this.selectedRowKeys);
     },
+    onClearSelectedRow() {
+      this.selectedRowKeys = [];
+    },
     onSearch() {
       this.fetchData();
     },

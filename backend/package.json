@@ -21,6 +21,7 @@
     "js-cookie": "^2.2.1",
     "less": "^3.10.3",
     "nuxt": "^2.0.0",
+    "nuxt-axios-duplicate-blocker": "^1.1.1",
     "nuxt-imagemin": "^1.0.0",
     "vue-apexcharts": "^1.5.2"
   },

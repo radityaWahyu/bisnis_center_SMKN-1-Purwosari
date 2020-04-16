@@ -11,7 +11,7 @@ use App\Repositories\Interfaces\ItemInterface;
 use App\Repositories\Interfaces\PostInterface;
 use App\Repositories\Interfaces\CountInterface;
 
-class frontendController extends Controller
+class FrontendController extends Controller
 {
     public function getItem(Request $request, ItemInterface $query)
     {

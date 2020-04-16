@@ -1,3 +1,6 @@
+// import axios from "axios";
+// const dynamicRoutes
+require("dotenv").config();
 export default {
   mode: "universal",
   /*
@@ -38,7 +41,7 @@ export default {
   plugins: [
     "~/plugins/helper",
     "~/plugins/skelenton",
-    "~/plugins/veeValidation"
+    "~/plugins/veeValidation",
   ],
   /*
    ** Nuxt.js dev-modules
@@ -64,11 +67,11 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: "http://localhost/bisnis_center/server/public/api/",
+    baseURL: process.env.API_URL,
     headers: {
       common: {
         "Cache-Control": "no-cache",
-      }
+      },
     },
   },
   /*
@@ -84,5 +87,5 @@ export default {
   server: {
     port: 8000, // default: 3000
     host: "0.0.0.0", // default: localhost
-  },
+  }
 };

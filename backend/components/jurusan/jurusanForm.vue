@@ -23,8 +23,8 @@
     <a-form
       :form="form"
       layout="vertical"
-      @submit="onSaved"
       :style="{ padding: '0px' }"
+      @submit.prevent="onSaved"
     >
       <a-form-item
         :style="{ marginBottom: '0px', marginTop: '0px' }"
@@ -70,8 +70,8 @@
         </a-button>
         <a-button
           type="primary"
-          html-type="submit"
           size="large"
+          html-type="submit"
           :loading="submitButton.loading"
           :style="{ width: '10em' }"
         >
@@ -113,17 +113,21 @@ export default {
       this.visible = true;
       this.edit = false;
     },
-    onSaved(e) {
-      e.preventDefault();
+    onSaved() {
+      // e.preventDefault();
+      if (process.server) return;
       this.form.validateFields(async (err, value) => {
         if (!err) {
           this.submitButton.text = " Proses...";
           this.submitButton.loading = true;
-
           try {
             if (this.edit === false) {
               //  create new departement
-              await this.createDepartement(value);
+              const response = await this.$store.dispatch(
+                "departement/createDepartement",
+                value
+              );
+              console.log(response);
             } else {
               //  update custom departement
               await this.updateDepartement({
@@ -137,7 +141,6 @@ export default {
             this.$emit("saved", true);
           } catch (error) {
             const errMsg = "";
-
             //  check when error 422 from server
             if (error.status === 422) {
               this.serverError = error.data.errors;

@@ -26,8 +26,8 @@ Route::get('post/{slug}', 'FrontendController@postBySlug');
 Route::get('departement/list', 'DepartementController@list');
 Route::get('departement/{departement}', 'DepartementController@show');
 
-Route::get('gallery', 'galleryController@index');
-Route::get('gallery/{id}', 'galleryController@show');
+Route::get('gallery', 'GalleryController@index');
+Route::get('gallery/{id}', 'GalleryController@show');
 
 // --------ADMIN ROUTE ------------------------------------------------------------
 Route::prefix('admin')->group(function () {
@@ -97,10 +97,10 @@ Route::prefix('admin')->group(function () {
     //
     // ─── GALLERY  ──────────────────────────────────────────────────────────
     //
-    Route::get('gallery', 'galleryController@index');
-    Route::post('gallery', 'galleryController@store');
-    Route::post('gallery/delete', 'galleryController@delete');
-    Route::get('gallery/{id}', 'galleryController@show');
+    Route::get('gallery', 'GalleryController@index');
+    Route::post('gallery', 'GalleryController@store');
+    Route::post('gallery/delete', 'GalleryController@delete');
+    Route::get('gallery/{id}', 'GalleryController@show');
     
   // end for middleware auth  
   });

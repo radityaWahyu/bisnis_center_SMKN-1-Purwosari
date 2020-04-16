@@ -1,6 +1,6 @@
 import cookies from "js-cookie";
 
-export default function({ store, redirect }) {
+export default function({ store }) {
   const token = cookies.get("x-access-token");
 
   if (token !== undefined) {

@@ -9,19 +9,20 @@
 <script>
 export default {
   name: "beranda",
-  async fetch() {
+  async asyncData({ store }) {
     try {
-      this.loading = true;
       const [news, product] = await Promise.all([
-        this.$store.dispatch("news/getNews", "limit=3"),
-        this.$store.dispatch("product/getProduct", "best=true&random=true"),
+        store.dispatch("news/getNews", "limit=3"),
+        store.dispatch("product/getProduct", "best=true&random=true"),
       ]);
-      this.product = product.data;
-      this.news = news.data;
+      return {
+        product: product.data,
+        news: news.data,
+        loading: false,
+      };
     } catch (error) {
       console.log(error);
     }
-    this.loading = false;
   },
   head() {
     return {

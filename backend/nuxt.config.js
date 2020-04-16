@@ -1,77 +1,82 @@
+require("dotenv").config();
+
 export default {
-  mode: 'spa',
+  mode: "spa",
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
-    meta: [{
-        charset: 'utf-8'
+    title: process.env.npm_package_name || "",
+    meta: [
+      {
+        charset: "utf-8"
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
       },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
-    link: [{
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico"
       },
       {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap'
-      },
+        rel: "stylesheet",
+        type: "text/css",
+        href: "https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      }
     ]
   },
   /*
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: "#fff"
   },
   /*
    ** Global CSS
    */
   css: [
     //'ant-design-vue/dist/antd.css'
-    '~/assets/stylesheet/main.css',
+    "~/assets/stylesheet/main.css",
     {
-      src: 'ant-design-vue/dist/antd.less',
-      lang: 'less'
+      src: "ant-design-vue/dist/antd.less",
+      lang: "less"
     }
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/antd-ui',
-    '~/plugins/axios',
-    '~/plugins/helper',
-    '~/plugins/ckeditor',
-    '~/plugins/apexChart'
+    "@/plugins/antd-ui",
+    "~/plugins/axios",
+    "~/plugins/helper",
+    "~/plugins/ckeditor",
+    "~/plugins/apexChart"
   ],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    "@nuxtjs/eslint-module"
   ],
   /*
    ** Nuxt.js modules
    */
   modules: [
+    "nuxt-axios-duplicate-blocker",
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    "@nuxtjs/axios",
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
+    "@nuxtjs/dotenv",
     "nuxt-imagemin"
   ],
   /*
@@ -79,11 +84,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL:'http://localhost/bisnis_center/server/public/api/admin/',
-    withCredentials: true,
+    //baseURL: 'http://localhost/bisnis_center/server/public/api/admin/',
+    baseURL: process.env.API_URL,
+    // withCredentials: true,
+    // retry: { retries: 1 },
     headers: {
       common: {
-        'Cache-Control': 'no-cache'
+        "Cache-Control": "no-cache"
       }
     }
   },
@@ -92,12 +99,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   router: {
-    middleware: 'refreshToken',
+    middleware: "refreshToken"
   },
   messages: {
-    loading: 'Loading...',
-    error_404: 'Maaf, halaman yang anda cari tidak ditemukan',
-    server_error: 'Maaf, terjadi kesalahan dalam server kami. Silahkan hubungi Administrator',
+    loading: "Loading...",
+    error_404: "Maaf, halaman yang anda cari tidak ditemukan",
+    server_error:
+      "Maaf, terjadi kesalahan dalam server kami. Silahkan hubungi Administrator"
   },
   /*
    ** Build configuration
@@ -113,14 +121,14 @@ export default {
         javascriptEnabled: true,
         modifyVars: {
           // You can here change your Ant vars
-          'primary-color': '#7468a6',
-          'border-radius-base': '3px',
-          'btn-font-weight': '600',
-          'card-radius': '4px',
-          'text-color': '#2F495E',
-          'menu-dark-bg': '#271232',
+          "primary-color": "#7468a6",
+          "border-radius-base": "3px",
+          "btn-font-weight": "600",
+          "card-radius": "4px",
+          "text-color": "#2F495E",
+          "menu-dark-bg": "#271232"
         }
-      },
+      }
     }
   }
-}
+};

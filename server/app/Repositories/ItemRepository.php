@@ -183,7 +183,7 @@ class ItemRepository implements ItemInterface
 
   public function slug($slug)
   {
-    $slug = str_slug($title);
+    $slug = str_slug($slug);
 
     //find slug into database
     $allSlug = $this->table->where('slug','like', $slug.'$')->get();
