@@ -85,7 +85,6 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    //baseURL: 'http://localhost/bisnis_center/server/public/api/admin/',
     baseURL: process.env.API_URL,
     // withCredentials: true,
     headers: {
