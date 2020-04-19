@@ -100,6 +100,7 @@ export default {
     };
   },
   created() {
+    if (process.server) return;
     this.form = this.$form.createForm(this);
   },
   methods: {
@@ -113,8 +114,9 @@ export default {
       this.visible = true;
       this.edit = false;
     },
-    onSaved() {
-      // e.preventDefault();
+    onSaved(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
       if (process.server) return;
       this.form.validateFields(async (err, value) => {
         if (!err) {
@@ -122,10 +124,13 @@ export default {
           this.submitButton.loading = true;
           try {
             if (this.edit === false) {
+              const formData = new FormData();
+              formData.append("jurusan", value.jurusan);
+
               //  create new departement
               const response = await this.$store.dispatch(
                 "departement/createDepartement",
-                value
+                formData
               );
               console.log(response);
             } else {

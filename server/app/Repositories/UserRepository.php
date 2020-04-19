@@ -4,15 +4,18 @@ namespace App\Repositories;
 use App\User;
 use App\Repositories\Interfaces\UserInterface;
 use Hash;
+use Illuminate\Support\Str;
 
 class UserRepository implements UserInterface
 {
 
   private $table;
+  private $extension;
 
   public function __construct(User $user)
   {
     $this->table = $user;
+    $this->extension = 'jpg';
   }
 
   public function getAll()
@@ -41,24 +44,29 @@ class UserRepository implements UserInterface
     return $query;
   }
 
-  public function create(array $data, $image)
+  public function create(array $data)
   {
+    $field = [];
+    $filename = Str::slug($data['nama'],'_').$this->extension;
     try {
-      $row = new $this->table;
-      $row->name = $data['nama'];
-      $row->email = $data['email'];
-      $row->password = Hash::make($data['password']);
-      $row->level = $data['level'];
-      $row->phone = $data['phone'];
 
+      $field += array(
+        'name' => $data['nama'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'level' => $data['level'],
+        'phone' => $data['phone'],
+        'image' => $filename
+      );
+
+     
       if(isset($data['jurusan'])){
-        $row->departement = $data['jurusan'];
+        $field += array('departement' => $data['jurusan']);
       }
-      
-      $row->image = $image;
-      $row->save();
+     
+      $row = $this->table->firstOrCreate($field);
 
-      $result = array('status' => true, 'message' => 'saved');
+      $result = array('status' => true, 'message' => 'saved', 'filename' => $filename);
       
     } catch (Exception $e) {
 
@@ -68,7 +76,7 @@ class UserRepository implements UserInterface
     return $result;
   }
 
-  public function update(array $data, $image, $id)
+  public function update(array $data, $id)
   {
     try {
       $row = $this->table->find($id);
@@ -84,14 +92,15 @@ class UserRepository implements UserInterface
       if(isset($data['jurusan'])){
         $row->departement = $data['jurusan'];
       }
-      
+      $filename = Str::slug($data['nama'],'_').$this->extension;
+
       if(!empty($image)){
-        $row->image = $image;
+        $row->image = $filename;
       }
       
       $row->save();
 
-      $result = array('status' => true, 'message' => 'updated');
+      $result = array('status' => true, 'message' => 'updated', 'filename' => $filename);
 
     } catch (Exception $e) {
       

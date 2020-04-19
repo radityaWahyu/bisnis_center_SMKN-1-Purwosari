@@ -28,11 +28,12 @@ export const actions = {
         });
     });
   },
-  deleteDepartement(payload) {
+  deleteDepartement({ store }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post(`departement/delete`, payload)
+        .$post("departement/delete", payload)
         .then(response => {
+          console.log(response);
           if (response.status) {
             resolve(response);
           } else {

@@ -38,9 +38,10 @@ class DepartementRepository implements DepartementInterface
   public function create(array $data)
   {
     try {
-      $row = new $this->table;
-      $row->name = $data['jurusan'];
-      $row->save();
+      $row = $this->table->firstOrCreate([
+        'name' => $data['jurusan']  
+      ]);
+      
       $result = array('status' => true, 'message' => 'saved');
       
     } catch (Exception $e) {

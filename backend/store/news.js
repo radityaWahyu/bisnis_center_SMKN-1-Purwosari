@@ -31,10 +31,10 @@ export const actions = {
         });
     });
   },
-  deletePost(payload) {
+  deletePost({ store }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post(`post/delete`, payload)
+        .$post("post/delete", payload)
         .then(response => {
           if (response.status) {
             resolve(response);

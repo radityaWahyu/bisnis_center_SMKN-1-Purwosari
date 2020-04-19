@@ -14,6 +14,8 @@ class Review extends Model
     public $incrementing = false;
     protected static $logAttributes = ['id', 'name', 'message', 'phone'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
+    protected $fillable = ['name', 'message', 'phone', 'parent_id', 'review_type', 'review_id', 'id_reply'];
+
     public function items()
     {
         return $this->belongsTo('App\Item','review_id','id');

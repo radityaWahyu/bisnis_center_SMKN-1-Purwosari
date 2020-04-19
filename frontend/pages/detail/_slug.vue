@@ -60,19 +60,6 @@
 </template>
 <script>
 export default {
-  async fetch() {
-    try {
-      this.loading = true;
-      const product = await this.$store.dispatch(
-        "product/showProduct",
-        this.$route.params.slug
-      );
-      this.row = product.data;
-    } catch (error) {
-      console.log(error);
-    }
-    this.loading = false;
-  },
   head() {
     return {
       title: this.row.title,
@@ -85,6 +72,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.getData(this.$route.params.slug);
+  },
   data() {
     return {
       slug: "",
@@ -96,6 +86,18 @@ export default {
   components: {
     reviewProduct: () => import("~/components/product/review"),
     imageGallery: () => import("~/components/product/galleryProduct"),
+  },
+  methods: {
+    async getData(id) {
+      try {
+        this.loading = true;
+        const product = await this.$store.dispatch("product/showProduct", id);
+        this.row = product.data;
+      } catch (error) {
+        console.log(error);
+      }
+      this.loading = false;
+    },
   },
 };
 </script>

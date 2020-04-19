@@ -16,6 +16,7 @@ class Departement extends Model
     public $incrementing = false;
     protected static $logAttributes = ['id', 'name'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
+    protected $fillable = ['name'];
     
     public function Items()
     {

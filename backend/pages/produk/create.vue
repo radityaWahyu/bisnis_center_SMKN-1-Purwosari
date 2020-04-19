@@ -63,8 +63,8 @@ export default {
     produkForm: () => import("~/components/produk/produkForm")
   },
   methods: {
-    onSave() {
-      this.$refs.productForm.saveProduct();
+    onSave(e) {
+      this.$refs.productForm.saveProduct(e);
     },
     cancel() {
       this.$router.push({ name: "produk" });

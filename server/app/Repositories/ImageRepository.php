@@ -19,10 +19,10 @@ class ImageRepository implements ImageInterface
     $this->extension = 'jpg';
   }
 
-  public function upload($file, $type)
+  public function upload($file, $type, $filename)
   {
     $image = $file;
-    $filename = str_random(20).'.'.$this->extension;
+    // $filename = $filename;
     
     //set folder upload in image and folder thumbnails
     $path = public_path().'/uploads/image/'.$type.'/'.$filename;
@@ -51,7 +51,7 @@ class ImageRepository implements ImageInterface
     return $result;
   }
 
-  public function update($file, $oldImage, $type)
+  public function update($file, $oldImage, $type, $filename)
   {
     try {
       //call function delete
@@ -59,7 +59,7 @@ class ImageRepository implements ImageInterface
 
       if($deleted) {
         //call function upload
-        $uploaded = $this->upload($file, $type);
+        $uploaded = $this->upload($file, $type, $filename);
         
         $result = array('status' => $uploaded['status'], 'message' => $uploaded['message'], 'filename' => $uploaded['filename']);
       }else{

@@ -9,10 +9,12 @@ class ItemRepository implements ItemInterface
 {
 
   private $table;
+  private $extension;
 
   public function __construct(Item $item)
   {
     $this->table = $item;
+    $this->extension = '.jpg';
   }
 
   public function getAll(array $data)
@@ -78,31 +80,34 @@ class ItemRepository implements ItemInterface
     return $query;
   }
 
-  public function create(array $data, $image)
+  public function create(array $data)
   {
     $user = Auth::user();
-    try {
-      $row = new $this->table;
-      $row->title = $data['judul'];
-      $row->slug = $this->slug($data['judul']);
-      $row->description = $data['deskripsi'];
-      $row->category = $data['kategori'];
-      $row->departement = $data['jurusan'];
-      $row->user = $user['id'];
-      $row->image = $image;
-      $row->save();
+    $filename = $this->slug($data['judul']).$this->extension;
 
-      $result = array('status' => true, 'message' => 'saved');
+    try {
+      
+      $row = $this->table->firstOrCreate([
+        'title' => $data['judul'],
+        'slug' => $this->slug($data['judul']),
+        'description' => $data['deskripsi'],
+        'category' => $data['kategori'],
+        'departement' => $data['jurusan'],
+        'user' => $user['id'],
+        'image' => $filename
+      ]);
+
+      $result = array('status' => true, 'message' => 'saved', 'filename' => $filename);
       
     } catch (Exception $e) {
 
-      $result = array('status'=> false, 'message'=> $e);
+      $result = array('status'=> false, 'message'=> $e, 'filename' => null);
     }
 
     return $result;
   }
 
-  public function update(array $data, $image, $id)
+  public function update(array $data, $id)
   {
     $user = Auth::user();
     try {
@@ -114,13 +119,15 @@ class ItemRepository implements ItemInterface
       $row->departement = $data['jurusan'];
       $row->user = $user['id'];    
 
+      $filename = $this->slug($data['judul']).$this->extension;
+
       if(!empty($image)){
-        $row->image = $image;
+        $row->image = $filename;
       }
       
       $row->save();
 
-      $result = array('status' => true, 'message' => 'updated');
+      $result = array('status' => true, 'message' => 'updated', 'filename' => $filename);
 
     } catch (Exception $e) {
       

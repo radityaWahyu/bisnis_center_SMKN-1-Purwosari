@@ -112,8 +112,8 @@ export default {
         cancelText: "Batalkan",
         onOk() {
           return new Promise((resolve, reject) => {
-            _this.$axios
-              .$post(`user/delete`, { id: _this.selectedRow })
+            _this.$store
+              .dispatch("user/deleteUser", { id: _this.selectedRow })
               .then(response => {
                 setTimeout(resolve(response), 2000);
               })

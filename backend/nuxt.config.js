@@ -72,12 +72,13 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    "nuxt-axios-duplicate-blocker",
+    // "nuxt-axios-duplicate-blocker",
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     // Doc: https://github.com/nuxt-community/dotenv-module
     "@nuxtjs/dotenv",
-    "nuxt-imagemin"
+    "nuxt-imagemin",
+    "@nuxtjs/proxy"
   ],
   /*
    ** Axios module configuration
@@ -87,19 +88,23 @@ export default {
     //baseURL: 'http://localhost/bisnis_center/server/public/api/admin/',
     baseURL: process.env.API_URL,
     // withCredentials: true,
-    // retry: { retries: 1 },
     headers: {
       common: {
         "Cache-Control": "no-cache"
       }
-    }
+    },
+    //proxy: true
   },
+  // proxy: {
+  //   "/api/": { target: "http://smknpurbisnis.com/core/api/admin/", pathRewrite: { "/api/": "" } }
+  // },
   /*
    ** Router configuration
    ** See https://axios.nuxtjs.org/options
    */
   router: {
-    middleware: "refreshToken"
+    middleware: "refreshToken",
+    base: '/kantor/'
   },
   messages: {
     loading: "Loading...",
@@ -130,5 +135,10 @@ export default {
         }
       }
     }
-  }
+  },
+  // server
+  // server: {
+  //   port: 8000, // default: 3000
+  //   host: process.env.BASE_URL, // default: localhost
+  // },
 };

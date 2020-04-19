@@ -59,11 +59,12 @@ class GalleryRepository implements GalleryInterface
   public function create(array $data, $image)
   {
     try {
-      $row = new $this->table;
-      $row->caption = $data['caption'];
-      $row->image = $image;
-      $row->item = $data['item_id'];
-      $row->save();
+  
+      $row = $this->table->firstOrCreate([
+        'caption' => $data['caption'],
+        'image' => $image,
+        'item' => $data['item_id']
+      ]);
 
       $result = array('status' => true, 'message' => 'saved');
       

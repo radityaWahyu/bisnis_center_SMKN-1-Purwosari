@@ -81,21 +81,24 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        //upload image in folder thumbnail and folder image
-        $image = $this->image->upload($request->image, 'item');
+
+        //add new data user in database
+        $data = $this->repository->create($request->all());
         
         //check when image upload sucess
-        if($image['status']) {
-            //add new data user in database
-            $data = $this->repository->create($request->all(), $image['filename']);
+        if($data['status']) {
+            
+            //upload image in folder thumbnail and folder image
+            $image = $this->image->upload($request->image, 'item', $data['filename']);
+
             return response()->json([
                 'status' => $data['status'],
                 'message' => $data['message']
             ]);
         }else{
             return response()->json([
-                'status' => $image['status'],
-                'message' => $image['message']
+                'status' => $data['status'],
+                'message' => $data['message']
             ]);
         }
         
@@ -150,20 +153,20 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //check request image not empty array
-        if($request->hasFile('image')){
+       
+
+        //update data user with new data
+        $data = $this->repository->update($request->all(), $id);
+
+         //check request image not empty array
+         if($request->hasFile('image')){
             // check user have image file
             $row = $this->repository->show($id);
 
             // delete image and upload new image
-            $upload = $this->image->update($request->file('image'), $row['data']->image, 'item');
-            $image = $upload['filename'];
-        }else{
-            $image = null;
+            $upload = $this->image->update($request->file('image'), $row['data']->image, 'item', $filename);
+            
         }
-
-        //update data user with new data
-        $data = $this->repository->update($request->all(), $image, $id);
 
         return response()->json([
             'status' => $data['status'],

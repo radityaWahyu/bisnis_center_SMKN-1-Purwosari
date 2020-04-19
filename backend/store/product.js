@@ -31,7 +31,7 @@ export const actions = {
         });
     });
   },
-  deleteProduct(payload) {
+  deleteProduct({ store }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
         .$post(`item/delete`, payload)

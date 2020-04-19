@@ -10,10 +10,12 @@ class PostRepository implements PostInterface
 {
 
   private $table;
+  private $extension;
 
   public function __construct(Post $post)
   {
     $this->table = $post;
+    $this->extension = '.jpg';
   }
 
   public function getAll(array $data)
@@ -67,21 +69,23 @@ class PostRepository implements PostInterface
     return $query;
   }
 
-  public function create(array $data, $image)
+  public function create(array $data)
   {
     $user = Auth::user();
+    $filename = $this->slug($data['judul']).$this->extension;
     try {
-      $row = new $this->table;
-      $row->title = $data['judul'];
-      $row->slug = $this->slug($data['judul']);
-      $row->content = $data['content'];
-      $row->departement = $data['jurusan'];
-      $row->user = $user['id'];     
-      $row->image = $image;
-      $row->is_publish = $data['publish'];
-      $row->save();
 
-      $result = array('status' => true, 'message' => 'saved');
+      $row = $this->table->firstOrCreate([
+        'title' => $data['judul'],
+        'slug' => $this->slug($data['judul']),
+        'content' => $data['content'],
+        'departement' => $data['jurusan'],
+        'user' => $user['id'],     
+        'image' => $filename,
+        'is_publish' => $data['publish']
+      ]);
+
+      $result = array('status' => true, 'message' => 'saved', 'filename' => $filename);
       
     } catch (Exception $e) {
 
@@ -91,7 +95,7 @@ class PostRepository implements PostInterface
     return $result;
   }
 
-  public function update(array $data, $image, $id)
+  public function update(array $data, $id)
   {
     $user = Auth::user();
     try {
@@ -103,13 +107,15 @@ class PostRepository implements PostInterface
       $row->user = $user['id'];
       $row->is_publish = $data['publish'];
 
+      $filename = $this->slug($data['judul']).$this->extension;
+
       if(!empty($image)){
-        $row->image = $image;
+        $row->image = $filename;
       }
       
       $row->save();
 
-      $result = array('status' => true, 'message' => 'updated');
+      $result = array('status' => true, 'message' => 'updated', 'filename' => $filename);
 
     } catch (Exception $e) {
       

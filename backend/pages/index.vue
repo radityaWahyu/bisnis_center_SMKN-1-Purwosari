@@ -168,9 +168,14 @@
                   :style="{ margin: '10px 0px 10px 0px', fontSize: '14px' }"
                   >Atau</a-divider
                 >
-                <a-button size="large" block :style="{ height: '50px' }"
-                  >Halaman Utama</a-button
+                <a-button
+                  size="large"
+                  block
+                  :style="{ height: '50px' }"
+                  @click="goIndex"
                 >
+                  Halaman Utama
+                </a-button>
               </a-form-item>
             </a-form>
           </a-col>
@@ -251,6 +256,9 @@ export default {
           this.localError = err;
         }
       });
+    },
+    goIndex() {
+      window.location = "http://smknpurbisnis.com";
     }
   }
 };

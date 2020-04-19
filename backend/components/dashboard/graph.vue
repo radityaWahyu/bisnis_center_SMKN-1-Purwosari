@@ -10,7 +10,7 @@
           <template slot="title">
             <span>Refresh Data</span>
           </template>
-          <a-button icon="reload" @click="reload" />
+          <a-button icon="reload" />
         </a-tooltip>
       </template>
       <apexchart

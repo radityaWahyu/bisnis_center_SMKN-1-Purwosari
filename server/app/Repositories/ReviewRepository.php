@@ -63,16 +63,23 @@ class ReviewRepository implements ReviewInterface
       $phone = $user['phone'];
     }
 
+    $field = [];
+
     try {
-      $row = new $this->table;
-      $row->name = $name;
-      $row->phone = $phone;
-      $row->message = $data['pesan'];
+
+      $field += array(
+        'name' => $name,
+        'phone' => $phone,
+        'message' => $data['pesan'],
+        'review_id' => $data['item'],
+        'review_type' => 'App\Item'
+      );
+      
       if(!empty($parent_id)){
-        $row->parent_id = $parent_id;
+        $field += array('parent_id' => $parent_id);
       }
-      $item = Item::find($data['item']);
-      $item->reviews()->save($row);
+      
+      $row = $this->table->firstOrCreate($field);
 
       $result = array('status' => true, 'message' => 'saved');
       

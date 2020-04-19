@@ -43,7 +43,7 @@ export const actions = {
         });
     });
   },
-  deleteUser(payload) {
+  deleteUser({ store }, payload) {
     return new Promise((resolve, reject) => {
       this.$axios
         .$post(`user/delete`, payload)

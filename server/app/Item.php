@@ -14,7 +14,7 @@ class Item extends Model
     public $incrementing = false;
     protected static $logAttributes = ['id', 'title', 'description', 'image', 'category', 'departement', 'user', 'is_best'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
-
+    protected $fillable = ['title','slug','description','image','category','user','departement','is_best'];
     
     public function departements()
     {

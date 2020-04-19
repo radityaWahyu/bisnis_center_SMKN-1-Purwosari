@@ -75,6 +75,7 @@ export const actions = {
       this.$axios
         .$post("login", value)
         .then(response => {
+          console.log(response);
           if (response.status === false) {
             reject(response);
           } else {
@@ -100,19 +101,19 @@ export const actions = {
       this.$axios
         .$get("logout")
         .then(response => {
-          if (response.status === false) {
-            reject(response);
-          } else {
-            //  remove axios token
-            // this.$axios.setToken(false);
-            //  remove cookies variable x-access-token
-            cookies.remove("x-access-token");
-            //  remove from vuex state
-            commit("remove_token");
-            commit("remove_user");
+          // if (response.status === false) {
+          //   reject(response);
+          // } else {
+          //  remove axios token
+          // this.$axios.setToken(false);
+          //  remove cookies variable x-access-token
+          cookies.remove("x-access-token");
+          //  remove from vuex state
+          commit("remove_token");
+          commit("remove_user");
 
-            resolve(response);
-          }
+          resolve(response);
+          // }
         })
         .catch(error => {
           reject(error.response);

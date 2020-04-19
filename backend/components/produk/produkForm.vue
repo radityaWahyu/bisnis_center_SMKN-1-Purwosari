@@ -241,7 +241,8 @@ export default {
         alert(error);
       }
     },
-    saveProduct() {
+    saveProduct(e) {
+      e.preventDefault();
       this.form.validateFields(async (err, value) => {
         if (!err) {
           if (this.image.length === 0) {

@@ -61,7 +61,20 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     "@nuxtjs/dotenv",
     "nuxt-imagemin",
+    "@nuxtjs/google-analytics",
+    "@nuxtjs/sitemap",
   ],
+  googleAnalytics: {
+    id: "UA-52834539-2",
+  },
+  sitemap: {
+    hostname: process.env.BASE_URL,
+    path: '/sitemap.xml',
+    gzip: true,
+    cacheTime: 1000 * 60 * 60 * 2,
+    trailingSlash: true,
+    gzip: true
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -87,5 +100,5 @@ export default {
   server: {
     port: 8000, // default: 3000
     host: "0.0.0.0", // default: localhost
-  }
+  },
 };

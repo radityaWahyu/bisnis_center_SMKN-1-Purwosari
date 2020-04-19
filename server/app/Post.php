@@ -14,6 +14,7 @@ class Post extends Model
     public $incrementing = false;
     protected static $logAttributes = ['id', 'title', 'user', 'departement', 'is_publish'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
+    protected $fillable = ['title','slug','content','image','user','departement','is_publish'];
 
     public function departements()
     {

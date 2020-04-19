@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $keyType = 'string';
     protected static $logAttributes = ['id', 'name', 'email', 'departement', 'password', 'level', 'phone', 'image'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
+
     /**
      * The attributes that are mass assignable.
      *

@@ -15,7 +15,7 @@ class Gallery extends Model
     public $incrementing = false;
     protected static $logAttributes = ['id', 'caption', 'image'];
     protected static $recordEvents = ['deleted', 'created', 'updated'];
-
+    protected $fillable = ['caption','image','item'];
 
     public function items()
     {
