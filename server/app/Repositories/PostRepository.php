@@ -53,7 +53,7 @@ class PostRepository implements PostInterface
 
     // check where user level operator or admin
     if($user['level'] == 'operator'){
-      $query = $query->where('user', $user['id']);
+      $query = $query->where('departement', $user['departement']);
     }
 
     if(!empty($data['search'])){
