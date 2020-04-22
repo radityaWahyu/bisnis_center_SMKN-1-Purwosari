@@ -75,7 +75,6 @@ export const actions = {
       this.$axios
         .$post("login", value)
         .then(response => {
-          console.log(response);
           if (response.status === false) {
             reject(response);
           } else {

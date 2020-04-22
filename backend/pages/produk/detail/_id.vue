@@ -34,9 +34,9 @@
           size="large"
           :style="{ marginTop: '10px' }"
           :loading="loadingBest"
-          @click="setBest(row.id, 1)"
+          @click="setBest(row.id, '1')"
           block
-          v-if="row.is_best === 0"
+          v-if="row.is_best === '0'"
         >
           <a-icon type="star" v-if="!loadingBest"></a-icon>
           <span>Set Unggulan</span>
@@ -46,9 +46,9 @@
           size="large"
           :style="{ marginTop: '15px' }"
           :loading="loadingBest"
-          @click="setBest(row.id, 0)"
+          @click="setBest(row.id, '0')"
           block
-          v-else-if="row.is_best === 1"
+          v-else-if="row.is_best === '1'"
         >
           <a-icon type="star" v-if="!loadingBest"></a-icon>
           <span>Batalkan Unggulan</span>

@@ -41,7 +41,7 @@ export default {
   plugins: [
     "~/plugins/helper",
     "~/plugins/skelenton",
-    "~/plugins/veeValidation",
+    "~/plugins/veeValidation"
   ],
   /*
    ** Nuxt.js dev-modules

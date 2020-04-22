@@ -410,7 +410,11 @@ export default {
             if (value.level === "operator") {
               fdUpdate.append("jurusan", value.jurusan);
             }
-            fdUpdate.append("password", value.password);
+            if (value.password !== undefined) {
+              fdUpdate.append("password", value.password);
+            } else {
+              fdUpdate.append("password", "");
+            }
             fdUpdate.append("image", this.imageData);
 
             // call function to update data product
@@ -448,7 +452,11 @@ export default {
             fdUpdate.append("nama", value.name);
             fdUpdate.append("email", value.email);
             fdUpdate.append("phone", value.phone);
-            fdUpdate.append("password", value.password);
+            if (value.password !== undefined) {
+              fdUpdate.append("password", value.password);
+            } else {
+              fdUpdate.append("password", "");
+            }
             fdUpdate.append("level", value.level);
             fdUpdate.append("image", this.imageData);
 

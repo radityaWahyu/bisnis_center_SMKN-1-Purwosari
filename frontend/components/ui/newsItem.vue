@@ -8,13 +8,12 @@
       "
       :alt="data.slug"
     />
-    <h3>{{ data.title }}</h3>
-    <p>
-      {{ data.content }}
-    </p>
-    <b-button type="is-primary" @click="readNews(data.slug)" expanded
-      >Selengkapnya</b-button
-    >
+    <div class="title">
+      <nuxt-link :to="{ name: 'berita-slug', params: { slug: data.slug } }">
+        {{ data.title }}
+      </nuxt-link>
+      <p>{{ data.departement_name }}</p>
+    </div>
   </div>
 </template>
 <script>

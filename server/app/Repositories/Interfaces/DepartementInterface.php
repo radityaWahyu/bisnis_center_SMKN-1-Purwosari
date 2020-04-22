@@ -7,4 +7,5 @@ use App\Repositories\Interfaces\BaseInterface;
 interface DepartementInterface extends BaseInterface
 {
   public function listDepartement();
+  public function findBySlug($slug);
 }

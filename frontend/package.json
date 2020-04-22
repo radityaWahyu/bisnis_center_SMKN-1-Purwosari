@@ -17,6 +17,7 @@
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
     "nuxt-imagemin": "^1.0.0",
+    "slugify": "^1.4.0",
     "vee-validate": "^3.2.5",
     "vue-loading-skeleton": "^1.1.8"
   },

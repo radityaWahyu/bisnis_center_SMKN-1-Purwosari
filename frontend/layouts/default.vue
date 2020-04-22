@@ -17,6 +17,11 @@ export default {
       setTimeout(() => this.$nuxt.$loading.finish(), 1000);
     });
   },
+  head() {
+    return {
+      meta: [{ hid: "robots", name: "robots", content: "index, follow" }],
+    };
+  },
   components: {
     topNavigation: () => import("~/components/layout/topNavigation"),
     layoutFooter: () => import("~/components/layout/footer"),

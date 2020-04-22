@@ -84,6 +84,7 @@ export const actions = {
           }
         })
         .then(response => {
+          console.log(response);
           if (response.status) {
             resolve(response);
           } else {

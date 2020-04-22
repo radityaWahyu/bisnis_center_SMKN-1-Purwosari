@@ -30,6 +30,7 @@ export const actions = {
       this.$axios
         .$get(`departement/${payload}`)
         .then((response) => {
+          console.log(response);
           if (response.status) {
             resolve(response);
           } else {

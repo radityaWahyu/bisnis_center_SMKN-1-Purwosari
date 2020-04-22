@@ -10,6 +10,7 @@ use App\Http\Resources\PostResource;
 use App\Repositories\Interfaces\ItemInterface;
 use App\Repositories\Interfaces\PostInterface;
 use App\Repositories\Interfaces\CountInterface;
+use App\Repositories\Interfaces\DepartementInterface;
 
 class FrontendController extends Controller
 {
@@ -87,6 +88,11 @@ class FrontendController extends Controller
             'message' => $data['message'],
             'data' => empty($data['data']) ? null : new PostDetailResource($data['data'])
         ]);
+    }
+
+    public function departementBySlug($slug, DepartementInterface $query)
+    {
+        return $query->findBySlug($slug);
     }
 
     public function count(Request $request, CountInterface $query) {

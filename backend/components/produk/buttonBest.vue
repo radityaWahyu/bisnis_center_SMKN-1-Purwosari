@@ -2,22 +2,20 @@
   <span>
     <a-button
       type="dashed"
-      v-if="isBest === 1"
-      @click="setBest(id, 0)"
+      v-if="isBest === '1'"
+      @click="setBest(id, '0')"
       :loading="loading.show"
     >
       <a-icon type="star" style="margin-right: 5px;" v-if="!loading.show" />
       <span v-if="loading.text.length > 0">
         {{ loading.text }}
       </span>
-      <span v-else>
-        Batalkan Unggulan
-      </span>
+      <span v-else> Batalkan Unggulan </span>
     </a-button>
     <a-button
       type="primary"
-      v-if="isBest === 0"
-      @click="setBest(id, 1)"
+      v-if="isBest === '0'"
+      @click="setBest(id, '1')"
       :loading="loading.show"
     >
       <a-icon type="star" style="margin-right: 5px;" v-if="!loading.show" />
@@ -38,7 +36,7 @@ export default {
       required: true
     },
     dataBest: {
-      type: Number,
+      type: String,
       required: true
     }
   },

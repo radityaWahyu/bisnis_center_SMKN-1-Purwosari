@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="onClick(data.slug)">
     <img
       :src="
         data.image != 0
@@ -11,11 +11,6 @@
     <div class="description">
       <h5>{{ data.title }}</h5>
       <p>{{ data.departement_name }}</p>
-    </div>
-    <div class="link">
-      <b-button type="is-primary" size="is-large" @click="onClick(data.slug)">
-        <b-icon icon="eye" size="is-small"> </b-icon>
-      </b-button>
     </div>
   </div>
 </template>

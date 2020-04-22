@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Departement;
 use App\Repositories\Interfaces\DepartementInterface;
+use Illuminate\Support\Str;
 
 
 class DepartementRepository implements DepartementInterface
@@ -113,5 +114,11 @@ class DepartementRepository implements DepartementInterface
     }
     
     return $result;
+  }
+
+  public function findBySlug($slug)
+  {
+    $str = implode(' ', explode('-', $slug));
+    return $str;
   }
 }

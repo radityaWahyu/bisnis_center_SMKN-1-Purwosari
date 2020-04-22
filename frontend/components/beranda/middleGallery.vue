@@ -1,5 +1,5 @@
 <template>
-  <div class="content container">
+  <div class="middle content container">
     <div class="title">
       <h4>Produk dan Jasa Unggulan :</h4>
       <p>Berisikan daftar produk dan jasa unggulan untuk setiap jurusan.</p>

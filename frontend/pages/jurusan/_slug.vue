@@ -91,11 +91,11 @@ export default {
       const [departement, product] = await Promise.all([
         this.$store.dispatch(
           "departement/showDepartement",
-          this.$route.params.id
+          this.$route.query.id
         ),
         this.$store.dispatch(
           "product/getProduct",
-          `departement=${this.$route.params.id}&paginate=true&limit=8`
+          `departement=${this.$route.query.id}&paginate=true&limit=8`
         ),
       ]);
       this.departement = departement.data;

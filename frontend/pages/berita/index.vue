@@ -36,6 +36,18 @@ export default {
     }
     this.loading = false;
   },
+  head() {
+    return {
+      title: "Berita Pusat Bisnis",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Daftar berita pusat bisnis SMKN 1 Purwosari",
+        },
+      ],
+    };
+  },
   data() {
     return {
       loading: false,

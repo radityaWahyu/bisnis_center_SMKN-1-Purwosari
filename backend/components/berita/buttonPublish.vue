@@ -2,8 +2,8 @@
   <span>
     <a-button
       type="dashed"
-      v-if="publish === 1"
-      @click="setPublish(id, 0)"
+      v-if="publish === '1'"
+      @click="setPublish(id, '0')"
       :loading="loading.show"
     >
       <a-icon type="save" style="margin-right: 5px;" v-if="!loading.show" />
@@ -16,8 +16,8 @@
     </a-button>
     <a-button
       type="primary"
-      v-if="publish === 0"
-      @click="setPublish(id, 1)"
+      v-if="publish === '0'"
+      @click="setPublish(id, '1')"
       :loading="loading.show"
     >
       <a-icon

@@ -54,7 +54,7 @@
               aria-role="listitem"
               v-for="item in departement"
               :key="item.id"
-              @click="gotoPage(item.id)"
+              @click="gotoPage(item)"
             >
               <b-icon icon="bookmark" size="is-small"> </b-icon>
               {{ item.departement }}
@@ -114,7 +114,7 @@
                   v-for="item in departement"
                   :key="item.id"
                   :label="item.departement"
-                  @click="gotoPage(item.id)"
+                  @click="gotoPage(item)"
                 ></b-menu-item>
               </b-menu-item>
               <b-menu-item
@@ -136,6 +136,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+const slugify = require("slugify");
+
 export default {
   computed: {
     ...mapGetters({
@@ -145,9 +147,14 @@ export default {
     }),
   },
   methods: {
-    gotoPage(departementId) {
+    gotoPage(value) {
       this.$store.commit("setBurger", false);
-      this.$router.push({ name: "jurusan-id", params: { id: departementId } });
+      const slug = slugify(value.departement);
+      this.$router.push({
+        name: "jurusan-slug",
+        params: { slug },
+        query: { id: value.id },
+      });
     },
     openNav() {
       this.$store.commit("setBurger", true);

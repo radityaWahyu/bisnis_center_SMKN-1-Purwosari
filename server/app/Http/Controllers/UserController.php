@@ -150,7 +150,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
         //update data user with new data
         $data = $this->repository->update($request->all(), $id);
 
